@@ -25,6 +25,12 @@ body {
   text-align: center;
   max-width: 100%;
 }
+b {
+  font-weight: bold;
+}
+i {
+  font-style: italic;
+}
 h1 {
   font-size: 40px; font-size: 4.0rem;
 }
