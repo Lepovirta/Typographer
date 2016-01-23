@@ -19,18 +19,16 @@ function newFonts() {
 
   $('#loading').show();
 
-  $('head').remove('#h1Font');
-  $('head').remove('#h2Font');
-  $('head').remove('#pFont');
-
   var randomFont = selectOne(fonts);
 
   $('h1').css('font-family', randomFont);
   var font = generateNewFontFamily(randomFont, "#h1Font");
+  $('head').remove('#h1Font');
   $('head').append(font);
 
   $('h2').css('font-family', randomFont);
   var font = generateNewFontFamily(randomFont, "#h2Font");
+  $('head').remove('#h2Font');
   $('head').append(font);
   $('#header-font').attr('href', font.href);
   $('#header-font').text(randomFont);
@@ -39,6 +37,7 @@ function newFonts() {
 
   $('p').css('font-family', randomFont);
   var font = generateNewFontFamily(randomFont, "#pFont");
+  $('head').remove('#pFont');
   $('head').append(font);
   $('#content-font').attr('href', font.href);
   $('#content-font').text(randomFont);

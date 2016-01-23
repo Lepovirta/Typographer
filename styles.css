@@ -5,7 +5,7 @@ html {
 body {
   background: #FAFAFA;
   color: #010101;
-  font-size: 19px; font-size: 1.9rem;
+  font-size: 16px; font-size: 1.6rem;
   font-family: "Titillium Web", sans-serif;
   line-height: 1.5;
 }
@@ -25,9 +25,19 @@ body {
   text-align: center;
   max-width: 100%;
 }
+b {
+  font-weight: bold;
+}
+i {
+  font-style: italic;
+}
 h1 {
   font-size: 40px; font-size: 4.0rem;
 }
 h2 {
-  font-size: 26px; font-size: 2.6rem;
+  font-size: 22px; font-size: 2.2rem;
+  line-height: 2em;
+}
+p {
+  margin: 1em 0;
 }
