@@ -17,6 +17,6 @@ sed "s/^/    \'/; s/$/\',/;" "$font_source" >> "$font_dest"
 sed -i "$ s/.$//" "$font_dest"
 
 # Close the list and object.
-printf "  ]\n};" >> "$font_dest"
+printf "  ]\n};\n" >> "$font_dest"
 
 echo "${font_dest} generated successfully."
