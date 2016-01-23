@@ -22,7 +22,7 @@ function Font(name, size) {
     $('head').append(fontElement);
     $(selector).css('font-family', this.name);
     if(selector === "h2") {
-      this.size /= 2; // Hack
+      this.size *= 2/3; // Hack
     }
     $(selector).css('font-size', this.size + "px");
   }
@@ -36,7 +36,7 @@ function selectOne(fontList) {
 function newFonts(fonts) {
 
   var headerFontName = selectOne(fonts);
-  var headerFontSize = randBetween(20, 60);
+  var headerFontSize = randBetween(30, 70);
   var headerFont = new Font(headerFontName, headerFontSize);
   headerFont.useStyleFor('h1');
   headerFont.useStyleFor('h2');
