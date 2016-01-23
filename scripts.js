@@ -33,11 +33,10 @@ function selectOne(fontList) {
   return fontList[randomIndex];
 }
 
-function newFonts() {
-  var fonts = Typographer.fontList;
+function newFonts(fonts) {
 
   var headerFontName = selectOne(fonts);
-  var headerFontSize = randBetween(20, 40);
+  var headerFontSize = randBetween(20, 60);
   var headerFont = new Font(headerFontName, headerFontSize);
   headerFont.useStyleFor('h1');
   headerFont.useStyleFor('h2');
@@ -54,11 +53,12 @@ function newFonts() {
 }
 
 $(document).ready(function(){
-  newFonts();
+  var fonts = Typographer.fontList;
+  newFonts(fonts);
 
   $(document).keypress(function(e) {
     if(e.which == 32) { // Space
-      newFonts();
+      newFonts(fonts);
     }
   });
 
