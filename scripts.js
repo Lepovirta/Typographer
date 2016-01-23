@@ -35,6 +35,8 @@ function selectOne(fontList) {
 
 function newFonts(fonts) {
 
+  clicky.log('#new-combination','New combination generated');
+
   var headerFontName = selectOne(fonts);
   var headerFontSize = randBetween(30, 70);
   var headerFont = new Font(headerFontName, headerFontSize);
