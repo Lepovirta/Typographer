@@ -9,21 +9,18 @@ body {
   font-family: "Titillium Web", sans-serif;
   line-height: 1.5;
 }
-#loading {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  display: none;
-  background: rgba(255, 255, 255, 0.5);
-}
-#generate {
-  margin: 3em;
-}
 #wrapper {
   width: 1000px;
-  margin: 0 auto;
+  margin: 1em auto;
   text-align: center;
   max-width: 100%;
+}
+.current-fonts {
+  padding: 1em;
+  background: #eee;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px #ddd inset;
+  margin: 1em;
 }
 b {
   font-weight: bold;
@@ -32,11 +29,10 @@ i {
   font-style: italic;
 }
 h1 {
-  font-size: 40px; font-size: 4.0rem;
+  line-height: 3em;
 }
 h2 {
-  font-size: 22px; font-size: 2.2rem;
-  line-height: 2em;
+  line-height: 1.5em;
 }
 p {
   margin: 1em 0;

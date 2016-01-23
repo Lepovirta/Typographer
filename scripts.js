@@ -1,61 +1,64 @@
+function spaceToPlus(string) {
+  return string.split(' ').join('+');
+}
+
+function randBetween(min, max) {
+  return Math.floor(Math.random()*(max-min+1)+min);
+};
+
+function Font(name, size) {
+  this.name = name;
+  this.size = size;
+  this.nameAsLinkElement = function() {
+    return 'http://fonts.googleapis.com/css?family=' + spaceToPlus(this.name);
+  }
+  this.useStyleFor = function(selector) {
+    var fontElement = document.createElement('link');
+    fontElement.type = 'text/css';
+    fontElement.rel = 'stylesheet';
+    fontElement.id = '#'+selector+"Font";
+    fontElement.href = this.nameAsLinkElement();
+    $('head').remove('#'+selector+"Font");
+    $('head').append(fontElement);
+    $(selector).css('font-family', this.name);
+    if(selector === "h2") {
+      this.size /= 2; // Hack
+    }
+    $(selector).css('font-size', this.size + "px");
+  }
+}
+
 function selectOne(fontList) {
   var randomIndex = Math.floor(Math.random()*fontList.length);
   return fontList[randomIndex];
 }
 
-function generateNewFontFamily(font, idOfElement) {
-  var style = document.createElement('link');
-  style.type = 'text/css';
-  style.rel = 'stylesheet';
-  style.id = idOfElement;
-  style.viewHref = 'https://www.google.com/fonts/specimen/';
-  style.viewHref += font.split(' ').join('+');
-  style.href = 'http://fonts.googleapis.com/css?family=';
-  style.href += font.split(' ').join('+');
-  return style;
-}
+function newFonts() {
+  var fonts = Typographer.fontList;
 
-function newFonts(fonts) {
+  var headerFontName = selectOne(fonts);
+  var headerFontSize = randBetween(20, 40);
+  var headerFont = new Font(headerFontName, headerFontSize);
+  headerFont.useStyleFor('h1');
+  headerFont.useStyleFor('h2');
+  $('#header-font').attr('href', headerFont.nameAsLinkElement());
+  $('#header-font').text(headerFont.name);
 
-  $('#loading').show();
-
-  var randomFont = selectOne(fonts);
-
-  $('h1').css('font-family', randomFont);
-  var font = generateNewFontFamily(randomFont, "#h1Font");
-  $('head').remove('#h1Font');
-  $('head').append(font);
-
-  $('h2').css('font-family', randomFont);
-  var font = generateNewFontFamily(randomFont, "#h2Font");
-  $('head').remove('#h2Font');
-  $('head').append(font);
-  $('#header-font').attr('href', font.href);
-  $('#header-font').text(randomFont);
-
-  randomFont = selectOne(fonts);
-
-  $('p').css('font-family', randomFont);
-  var font = generateNewFontFamily(randomFont, "#pFont");
-  $('head').remove('#pFont');
-  $('head').append(font);
-  $('#content-font').attr('href', font.href);
-  $('#content-font').text(randomFont);
-
-  setTimeout(function(){
-    $('#loading').hide();
-  }, 300);
+  var contentFontName = selectOne(fonts);
+  var contentFontSize = randBetween(14, 20);
+  var contentFont = new Font(contentFontName, contentFontSize);
+  contentFont.useStyleFor('p');
+  $('#content-font').attr('href', contentFont.nameAsLinkElement());
+  $('#content-font').text(contentFont.name);
 
 }
 
 $(document).ready(function(){
-  var fonts = Typographer.fontList;
-  newFonts(fonts);
+  newFonts();
 
   $(document).keypress(function(e) {
-    // Space
-    if(e.which == 32) {
-      newFonts(fonts);
+    if(e.which == 32) { // Space
+      newFonts();
     }
   });
 
