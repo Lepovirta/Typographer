@@ -33,24 +33,21 @@ function selectOne(fontList) {
   return fontList[randomIndex];
 }
 
-function newFonts(firstLocked, secondLocked, fonts) {
+function newFonts() {
 
   if(typeof clicky !== "undefined") { clicky.log('#new-combination','New combination generated'); }
   
-  if(!firstLocked) {
-    var headerFontName = selectOne(fonts);
-    var headerFontSize = randBetween(30, 70);
-    var headerFont = new Font(headerFontName, headerFontSize);
-    headerFont.useStyleFor('h1');
-    headerFont.useStyleFor('h2');
-  }
+  var headerFontName = selectOne(fonts);
+  var headerFontSize = randBetween(30, 70);
+  var headerFont = new Font(headerFontName, headerFontSize);
+  headerFont.useStyleFor('h1');
+  headerFont.useStyleFor('h2');
+
+  var contentFontName = selectOne(fonts);
+  var contentFontSize = randBetween(14, 20);
+  var contentFont = new Font(contentFontName, contentFontSize);
+  contentFont.useStyleFor('p');
   
-  if(!secondLocked) {
-    var contentFontName = selectOne(fonts);
-    var contentFontSize = randBetween(14, 20);
-    var contentFont = new Font(contentFontName, contentFontSize);
-    contentFont.useStyleFor('p');
-  }
   return [headerFont, contentFont];
 }
 
@@ -62,34 +59,36 @@ function booleanToEnglish(boolean) {
 
 function ViewModel() {
   var self = this;
-  
+
   var lockedCssClass = "button-primary";
   var unLockedCssClass = "button-outline";
-  
+
   self.firstLocked = ko.observable(false);
   self.secondLocked = ko.observable(false);
   self.headerFont = ko.observable();
+  self.headerFontHref = ko.observable();
   self.contentFont = ko.observable();
-  
+  self.contentFontHref = ko.observable();
+
   self.firstCss = ko.pureComputed(function(){
     return self.firstLocked() ? lockedCssClass : unLockedCssClass;
   });
-  
+
   self.secondCss = ko.pureComputed(function(){
     return self.secondLocked() ? lockedCssClass : unLockedCssClass;
   });
-  
+
   self.firstLabel = ko.pureComputed(function(){
     if(self.firstLocked()) {
       return "Unlock #1 (1)";
-    } 
+    }
     return "Lock #1 (1)";
   });
-  
+
   self.secondLabel = ko.pureComputed(function(){
     if(self.secondLocked()) {
       return "Unlock #2 (2)";
-    } 
+    }
     return "Lock #2 (2)";
   });
 
@@ -102,28 +101,34 @@ function ViewModel() {
   }
 
   self.newCombination = function () {
-    var newFontCombos = newFonts(self.firstLocked(), self.secondLocked(), fonts);
-    self.headerFont(newFontCombos[0].name);
-    self.contentFont(newFontCombos[1].name);
+    var newFontCombos = newFonts(self.firstLocked(), self.secondLocked());
+    if(!self.firstLocked()) {
+      self.headerFont(newFontCombos[0].name);
+      self.headerFontHref(newFontCombos[0].nameAsLinkElement());
+    }
+    if(!self.secondLocked()) {
+      self.contentFont(newFontCombos[1].name);
+      self.contentFontHref(newFontCombos[1].nameAsLinkElement());
+    }
   }
-  
+
   self.newCombination();
 
   window.addEventListener("keydown", checkKeyPressed, false);
 
   function checkKeyPressed(e) {
     switch(e.keyCode) {
-      case 49: 
+      case 49:
         self.lockFirst();
-        break;        
-      case 50: 
+        break;
+      case 50:
         self.lockSecond();
         break;
-      case 78: 
+      case 78:
         self.newCombination();
         break;
     }
   }
-} 
+}
 
 ko.applyBindings(new ViewModel());
