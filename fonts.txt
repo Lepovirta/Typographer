@@ -143,7 +143,6 @@ Cinzel
 Cinzel Decorative
 Clicker Script
 Coda
-Coda Caption
 Codystar
 Combo
 Comfortaa
@@ -481,7 +480,6 @@ Oldenburg
 Oleo Script
 Oleo Script Swash Caps
 Open Sans
-Open Sans Condensed
 Oranienbaum
 Orbitron
 Oregano

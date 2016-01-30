@@ -14,11 +14,11 @@
   </head>
   <body>
     <div id="wrapper">
-      <!-- <button class="button button-primary" id="generate">+ Upvote</button> -->
-      <button class="button button-primary" id="generate">Create new combination (space)</button>
-      <!-- <button class="button button-primary" id="generate">- Downvote</button> -->
+      <button data-bind="text: firstLabel, click: lockFirst" class="button button-primary"></button>
+      <button data-bind="text: secondLabel, click: lockSecond" class="button button-primary"></button>
+      <button data-bind="click: newCombination" class="button button-primary">Create new combination (space)</button>
       <div class="current-fonts">
-        <span>&lt;h1&gt; + &lt;h2&gt; <a target="_blank" id="header-font" href=""></a></span> &
+        <span>&lt;h1&gt; + &lt;h2&gt; <a target="_blank" id="header-font" href=""></a></span> &amp;
         <span>&lt;p&gt; <a target="_blank" id="content-font" href=""></a></span>
       </div>
       <h1 title="h1">I am Typographer</h1>
@@ -28,6 +28,7 @@
       <p title="p">All of the fonts are <b>Open Source</b>. This means that you are free to share your favorites with friends and colleagues. You can even customize them for your own use, or collaborate with the original designer to improve them. And you can use them in every way you want, privately or commercially — in print, on your computer, or in your websites.</p>
     </div>
     <script src="//static.getclicky.com/js" type="text/javascript"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
     <script type="text/javascript">try{ clicky.init(100917218); }catch(e){}</script>
     <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100917218ns.gif" /></p></noscript>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
