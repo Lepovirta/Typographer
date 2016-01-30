@@ -43,8 +43,6 @@ function newFonts(firstLocked, secondLocked, fonts) {
     var headerFont = new Font(headerFontName, headerFontSize);
     headerFont.useStyleFor('h1');
     headerFont.useStyleFor('h2');
-    $('#header-font').attr('href', headerFont.nameAsLinkElement());
-    $('#header-font').text(headerFont.name);
   }
   
   if(!secondLocked) {
@@ -52,10 +50,8 @@ function newFonts(firstLocked, secondLocked, fonts) {
     var contentFontSize = randBetween(14, 20);
     var contentFont = new Font(contentFontName, contentFontSize);
     contentFont.useStyleFor('p');
-    $('#content-font').attr('href', contentFont.nameAsLinkElement());
-    $('#content-font').text(contentFont.name);
   }
-  
+  return [headerFont, contentFont];
 }
 
 var fonts = Typographer.fontList;
@@ -72,6 +68,8 @@ function ViewModel() {
   
   self.firstLocked = ko.observable(false);
   self.secondLocked = ko.observable(false);
+  self.headerFont = ko.observable();
+  self.contentFont = ko.observable();
 
   newFonts(self.firstLocked(), self.secondLocked(), fonts);
   
@@ -82,7 +80,7 @@ function ViewModel() {
   self.secondCss = ko.pureComputed(function(){
     return self.secondLocked() ? lockedCssClass : unLockedCssClass;
   });
-                              
+  
   self.firstLabel = ko.pureComputed(function(){
     if(self.firstLocked()) {
       return "Unlock #1 (1)";
@@ -106,7 +104,9 @@ function ViewModel() {
   }
 
   self.newCombination = function () {
-    newFonts(self.firstLocked(), self.secondLocked(), fonts);
+    var newFontCombos = newFonts(self.firstLocked(), self.secondLocked(), fonts);
+    self.headerFont(newFontCombos[0].name);
+    self.contentFont(newFontCombos[1].name);
   }
 
   window.addEventListener("keydown", checkKeyPressed, false);

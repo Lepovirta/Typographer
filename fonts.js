@@ -697,7 +697,6 @@ var Typographer = {
     'Uncial Antiqua',
     'Underdog',
     'Unica One',
-    'UnifrakturCook',
     'UnifrakturMaguntia',
     'Unkempt',
     'Unlock',

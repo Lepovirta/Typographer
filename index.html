@@ -14,17 +14,27 @@
   </head>
   <body>
     <div id="wrapper">
-      <table>
-        <tr>
-          <td><button data-bind="css: firstCss, text: firstLabel, click: lockFirst" class="button"></button></td>
-          <td><button data-bind="css: secondCss, text: secondLabel, click: lockSecond" class="button"></button></td>
-          <td><button data-bind="click: newCombination" class="button button-primary">New combination (n)</button></td>
-        </tr>
-      </table>
-      <div id="current-fonts">
-        <span>&lt;h1&gt; + &lt;h2&gt; <a target="_blank" id="header-font" href=""></a></span> &amp;
-        <span>&lt;p&gt; <a target="_blank" id="content-font" href=""></a></span>
+      <div class="row">
+        <div class="col">
+          <button data-bind="css: firstCss, text: firstLabel, click: lockFirst" class="button"></button>
+        </div>
+        <div class="col">
+          <button data-bind="css: secondCss, text: secondLabel, click: lockSecond" class="button"></button>
+        </div>
+        <div class="col">
+          <button data-bind="click: newCombination" class="button button-primary">New combo (n)</button>
+        </div>
       </div>
+      <div class="row">
+        <div class="col">
+          <span>&lt;h1&gt; + &lt;h2&gt; <a target="_blank" data-bind="text: headerFont"></a></span>
+        </div>
+        <div class="col">
+          <span>&lt;p&gt; <a target="_blank" data-bind="text: contentFont"></a></span>
+        </div>
+        <div class="col">
+        </div>
+      </div>      
       <h1 title="h1">I am Typographer</h1>
       <h2 title="h2">I'll help you generate cool font combos</h2>
       <p title="p"><b>Google Fonts</b> makes it quick and easy for everyone to use web fonts, including <i>professional designers and developers</i>. We believe that everyone should be able to bring quality typography to their web pages and applications.</p>
