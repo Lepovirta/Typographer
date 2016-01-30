@@ -14,7 +14,6 @@ function Font(name, size) {
   }
   this.useStyleFor = function(selector) {
     var fontElement = document.createElement('link');
-    fontElement.type = 'text/css';
     fontElement.rel = 'stylesheet';
     fontElement.id = '#'+selector+"Font";
     fontElement.href = this.href();
@@ -22,7 +21,7 @@ function Font(name, size) {
     $('head').append(fontElement);
     $(selector).css('font-family', this.name);
     if(selector === "h2") {
-      this.size *= 2/3; // Hack
+      this.size *= 2/3
     }
     $(selector).css('font-size', this.size + "px");
   }
@@ -39,10 +38,6 @@ function newFont(size, targetElements) {
   var fontSize = size;
   var font = new Font(fontName, fontSize);
   for(var i = 0; i < targetElements.length; i++) {
-    // FIXME: remove hack
-    if(targetElements[i] === "h2") {
-      font.size = font.size * 2/3;
-    }
     font.useStyleFor(targetElements[i]);
   }
   return font;
