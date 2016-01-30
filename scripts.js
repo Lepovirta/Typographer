@@ -68,6 +68,7 @@ function ViewModel() {
   var self = this;
   
   var lockedCssClass = "button-primary";
+  var unLockedCssClass = "button-outline";
   
   self.firstLocked = ko.observable(false);
   self.secondLocked = ko.observable(false);
@@ -75,11 +76,11 @@ function ViewModel() {
   newFonts(self.firstLocked(), self.secondLocked(), fonts);
   
   self.firstCss = ko.pureComputed(function(){
-    return self.firstLocked() ? lockedCssClass : "";
+    return self.firstLocked() ? lockedCssClass : unLockedCssClass;
   });
   
   self.secondCss = ko.pureComputed(function(){
-    return self.secondLocked() ? lockedCssClass : "";
+    return self.secondLocked() ? lockedCssClass : unLockedCssClass;
   });
                               
   self.firstLabel = ko.pureComputed(function(){
