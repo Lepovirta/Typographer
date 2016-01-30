@@ -9,7 +9,7 @@ function randBetween(min, max) {
 function Font(name, size) {
   this.name = name;
   this.size = size;
-  this.nameAsLinkElement = function() {
+  this.href = function() {
     return 'http://fonts.googleapis.com/css?family=' + spaceToPlus(this.name);
   }
   this.useStyleFor = function(selector) {
@@ -17,7 +17,7 @@ function Font(name, size) {
     fontElement.type = 'text/css';
     fontElement.rel = 'stylesheet';
     fontElement.id = '#'+selector+"Font";
-    fontElement.href = this.nameAsLinkElement();
+    fontElement.href = this.href();
     $('head').remove('#'+selector+"Font");
     $('head').append(fontElement);
     $(selector).css('font-family', this.name);
@@ -33,22 +33,19 @@ function selectOne(fontList) {
   return fontList[randomIndex];
 }
 
-function newFonts() {
-
+function newFont(size, targetElements) {
   if(typeof clicky !== "undefined") { clicky.log('#new-combination','New combination generated'); }
-  
-  var headerFontName = selectOne(fonts);
-  var headerFontSize = randBetween(30, 70);
-  var headerFont = new Font(headerFontName, headerFontSize);
-  headerFont.useStyleFor('h1');
-  headerFont.useStyleFor('h2');
-
-  var contentFontName = selectOne(fonts);
-  var contentFontSize = randBetween(14, 20);
-  var contentFont = new Font(contentFontName, contentFontSize);
-  contentFont.useStyleFor('p');
-  
-  return [headerFont, contentFont];
+  var fontName = selectOne(fonts);
+  var fontSize = size;
+  var font = new Font(fontName, fontSize);
+  for(var i = 0; i < targetElements.length; i++) {
+    // FIXME: remove hack
+    if(targetElements[i] === "h2") {
+      font.size = font.size * 2/3;
+    }
+    font.useStyleFor(targetElements[i]);
+  }
+  return font;
 }
 
 var fonts = Typographer.fontList;
@@ -63,6 +60,9 @@ function ViewModel() {
   var lockedCssClass = "button-primary";
   var unLockedCssClass = "button-outline";
 
+  self.currentHeaderFont = ko.observable();
+  self.currentContentFont = ko.observable();
+  
   self.firstLocked = ko.observable(false);
   self.secondLocked = ko.observable(false);
   self.headerFont = ko.observable();
@@ -101,14 +101,11 @@ function ViewModel() {
   }
 
   self.newCombination = function () {
-    var newFontCombos = newFonts(self.firstLocked(), self.secondLocked());
     if(!self.firstLocked()) {
-      self.headerFont(newFontCombos[0].name);
-      self.headerFontHref(newFontCombos[0].nameAsLinkElement());
+       self.currentHeaderFont(newFont(randBetween(31, 70), ['h1', 'h2'])); 
     }
-    if(!self.secondLocked()) {
-      self.contentFont(newFontCombos[1].name);
-      self.contentFontHref(newFontCombos[1].nameAsLinkElement());
+    if(!self.secondLocked()){
+      self.currentContentFont(newFont(randBetween(15, 20), ['p']));      
     }
   }
 

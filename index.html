@@ -27,10 +27,10 @@
       </div>
       <div class="row">
         <div class="col">
-          <span>&lt;h1&gt; + &lt;h2&gt; <a target="_blank" data-bind="text: headerFont, attr: { href: headerFontHref}"></a></span>
+          <span>&lt;h1&gt; + &lt;h2&gt; <a target="_blank" data-bind="text: currentHeaderFont().name, attr: { href: currentHeaderFont().href()}"></a></span>
         </div>
         <div class="col">
-          <span>&lt;p&gt; <a target="_blank" data-bind="text: contentFont, attr: { href: headerFontHref}"></a></span>
+          <span>&lt;p&gt; <a target="_blank" data-bind="text: currentContentFont().name, attr: { href: currentContentFont().href()}"></a></span>
         </div>
         <div class="col">
         </div>
