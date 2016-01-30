@@ -70,8 +70,6 @@ function ViewModel() {
   self.secondLocked = ko.observable(false);
   self.headerFont = ko.observable();
   self.contentFont = ko.observable();
-
-  newFonts(self.firstLocked(), self.secondLocked(), fonts);
   
   self.firstCss = ko.pureComputed(function(){
     return self.firstLocked() ? lockedCssClass : unLockedCssClass;
@@ -108,6 +106,8 @@ function ViewModel() {
     self.headerFont(newFontCombos[0].name);
     self.contentFont(newFontCombos[1].name);
   }
+  
+  self.newCombination();
 
   window.addEventListener("keydown", checkKeyPressed, false);
 
@@ -120,7 +120,7 @@ function ViewModel() {
         self.lockSecond();
         break;
       case 78: 
-        newFonts(self.firstLocked(), self.secondLocked(), fonts);
+        self.newCombination();
         break;
     }
   }

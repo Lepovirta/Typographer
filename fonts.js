@@ -101,7 +101,6 @@ var Typographer = {
     'Bree Serif',
     'Bubblegum Sans',
     'Bubbler One',
-    'Buda',
     'Buenard',
     'Butcherman',
     'Butterfly Kids',
