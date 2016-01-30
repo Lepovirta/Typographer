@@ -14,9 +14,9 @@
   </head>
   <body>
     <div id="wrapper">
-      <button data-bind="text: firstLabel, click: lockFirst" class="button button-primary"></button>
-      <button data-bind="text: secondLabel, click: lockSecond" class="button button-primary"></button>
-      <button data-bind="click: newCombination" class="button button-primary">Create new combination (space)</button>
+      <button data-bind="css: firstCss, text: firstLabel, click: lockFirst" class="button button-outline"></button>
+      <button data-bind="css: secondCss, text: secondLabel, click: lockSecond" class="button button-outline"></button>
+      <button data-bind="click: newCombination" class="button button-primary">New combination (n)</button>
       <div class="current-fonts">
         <span>&lt;h1&gt; + &lt;h2&gt; <a target="_blank" id="header-font" href=""></a></span> &amp;
         <span>&lt;p&gt; <a target="_blank" id="content-font" href=""></a></span>

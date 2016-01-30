@@ -67,17 +67,33 @@ function booleanToEnglish(boolean) {
 function ViewModel() {
   var self = this;
   
+  var lockedCssClass = "button-primary";
+  
   self.firstLocked = ko.observable(false);
   self.secondLocked = ko.observable(false);
 
   newFonts(self.firstLocked(), self.secondLocked(), fonts);
   
-  self.firstLabel = ko.computed(function(){
-    return "Lock #1 ("+booleanToEnglish(self.firstLocked())+")";
+  self.firstCss = ko.pureComputed(function(){
+    return self.firstLocked() ? lockedCssClass : "";
   });
   
-  self.secondLabel = ko.computed(function(){
-    return "Lock #2 ("+booleanToEnglish(self.secondLocked())+")";
+  self.secondCss = ko.pureComputed(function(){
+    return self.secondLocked() ? lockedCssClass : "";
+  });
+                              
+  self.firstLabel = ko.pureComputed(function(){
+    if(self.firstLocked()) {
+      return "Unlock #1 (1)";
+    } 
+    return "Lock #1 (1)";
+  });
+  
+  self.secondLabel = ko.pureComputed(function(){
+    if(self.secondLocked()) {
+      return "Unlock #2 (2)";
+    } 
+    return "Lock #2 (2)";
   });
 
   self.lockFirst = function() {
@@ -90,13 +106,23 @@ function ViewModel() {
 
   self.newCombination = function () {
     newFonts(self.firstLocked(), self.secondLocked(), fonts);
-  };
+  }
 
-  $(document).keypress(function(e) {
-    if(e.which == 32) {
-      newFonts(self.firstLocked(), self.secondLocked(), fonts);
+  window.addEventListener("keydown", checkKeyPressed, false);
+
+  function checkKeyPressed(e) {
+    switch(e.keyCode) {
+      case 49: 
+        self.lockFirst();
+        break;        
+      case 50: 
+        self.lockSecond();
+        break;
+      case 78: 
+        newFonts(self.firstLocked(), self.secondLocked(), fonts);
+        break;
     }
-  });    
+  }
 } 
 
 ko.applyBindings(new ViewModel());

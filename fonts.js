@@ -429,7 +429,6 @@ var Typographer = {
     'Modak',
     'Modern Antiqua',
     'Molengo',
-    'Molle',
     'Monda',
     'Monofett',
     'Monoton',
