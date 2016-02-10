@@ -1,7 +1,7 @@
 # The Typographer
 The typographer helps you on font selection.
 
-Online: [thevangelist.github.io/Typographer/](http://thevangelist.github.io/Typographer/)
+Online: [lepovirta.github.io/Typographer/](http://lepovirta.github.io/Typographer/)
 
 * Randomized fonts from Google fonts
 * Randomize h1+2 and p fonts
