@@ -16,6 +16,17 @@
     <div id="wrapper">
       <div class="row">
         <div class="col">
+          <input type="text" data-bind="value: h1Text" />
+        </div>
+        <div class="col">
+          <input type="text" data-bind="value: h2Text" />
+        </div>
+      </div>
+      <div class="row">
+        <textarea data-bind="value: contentText"></textarea>
+      </div>
+      <div class="row">
+        <div class="col">
           <button data-bind="css: firstCss, text: firstLabel, click: lockFirst" class="button"></button>
         </div>
         <div class="col">
@@ -34,10 +45,10 @@
         </div>
         <div class="col">
         </div>
-      </div>      
-      <h1 title="h1">I am Typographer</h1>
-      <h2 title="h2">I'll help you generate cool font combos</h2>
-      <p title="p"><b>Google Fonts</b> makes it quick and easy for everyone to use web fonts, including <i>professional designers and developers</i>. We believe that everyone should be able to bring quality typography to their web pages and applications.</p>
+      </div>
+      <h1 title="h1" data-bind="text: h1Text">I am Typographer</h1>
+      <h2 title="h2" data-bind="text: h2Text">I'll help you generate cool font combos</h2>
+      <p title="p" data-bind="text: contentText"></p>
       <p title="p">Our goal is to create a directory of web fonts for the world to use. Our API service makes it easy to add Google Fonts to a website in seconds. The service runs on Google's servers which are fast, reliable and tested. Google provides this service <b>free of charge</b>.</p>
       <p title="p">All of the fonts are <b>Open Source</b>. This means that you are free to share your favorites with friends and colleagues. You can even customize them for your own use, or collaborate with the original designer to improve them. And you can use them in every way you want, privately or commercially — in print, on your computer, or in your websites.</p>
     </div>
@@ -47,6 +58,6 @@
     <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100917218ns.gif" /></p></noscript>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
     <script type="text/javascript" src="fonts.js"></script>
-    <script type="text/javascript" src="scripts.js"></script>    
+    <script type="text/javascript" src="scripts.js"></script>
   </body>
 </html>

@@ -55,9 +55,13 @@ function ViewModel() {
   var lockedCssClass = "button-primary";
   var unLockedCssClass = "button-outline";
 
+  self.h1Text = ko.observable("I am typographer");
+  self.h2Text = ko.observable("I'll help you generate cool font combos");
+  self.contentText = ko.observable("Google Fonts makes it quick and easy for everyone to use web fonts, including professional designers and developers. We believe that everyone should be able to bring quality typography to their web pages and applications.");
+
   self.currentHeaderFont = ko.observable();
   self.currentContentFont = ko.observable();
-  
+
   self.firstLocked = ko.observable(false);
   self.secondLocked = ko.observable(false);
   self.headerFont = ko.observable();
@@ -97,10 +101,10 @@ function ViewModel() {
 
   self.newCombination = function () {
     if(!self.firstLocked()) {
-       self.currentHeaderFont(newFont(randBetween(31, 70), ['h1', 'h2'])); 
+       self.currentHeaderFont(newFont(randBetween(31, 70), ['h1', 'h2']));
     }
     if(!self.secondLocked()){
-      self.currentContentFont(newFont(randBetween(15, 20), ['p']));      
+      self.currentContentFont(newFont(randBetween(15, 20), ['p']));
     }
   }
 
@@ -109,6 +113,10 @@ function ViewModel() {
   window.addEventListener("keydown", checkKeyPressed, false);
 
   function checkKeyPressed(e) {
+    // Allow users freely input stuff
+    if($('input, textarea').is(':focus')) {
+      return;
+    }
     switch(e.keyCode) {
       case 49:
         self.lockFirst();
