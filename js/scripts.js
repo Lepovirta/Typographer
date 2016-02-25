@@ -43,7 +43,7 @@ function newFont(size, targetElements) {
   return font;
 }
 
-var fonts = Typographer.fontList;
+var fonts = Fonts.fontList;
 
 function booleanToEnglish(boolean) {
   return boolean ? "Yes" : "No";

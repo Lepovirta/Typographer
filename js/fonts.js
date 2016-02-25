@@ -1,5 +1,7 @@
-var Typographer = {
-  fontList: [
+var Fonts = (function() {
+  var module = this;
+
+  fontList = [
     'ABeeZee',
     'Abel',
     'Abril Fatface',
@@ -727,5 +729,7 @@ var Typographer = {
     'Yeseva One',
     'Yesteryear',
     'Zeyada'
-  ]
-};
+  ];
+
+  return module;
+})();
