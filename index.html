@@ -38,10 +38,14 @@
       </div>
       <div class="row">
         <div class="col">
+          <!-- ko with: currentHeaderFont -->
           <span>&lt;h1&gt; + &lt;h2&gt; <a target="_blank" data-bind="text: currentHeaderFont().name, attr: { href: currentHeaderFont().href()}"></a></span>
+          <!-- /ko -->
         </div>
         <div class="col">
+          <!-- ko with: currentHeaderFont -->
           <span>&lt;p&gt; <a target="_blank" data-bind="text: currentContentFont().name, attr: { href: currentContentFont().href()}"></a></span>
+          <!-- /ko -->
         </div>
         <div class="col">
         </div>
@@ -52,12 +56,10 @@
       <p title="p">Our goal is to create a directory of web fonts for the world to use. Our API service makes it easy to add Google Fonts to a website in seconds. The service runs on Google's servers which are fast, reliable and tested. Google provides this service <b>free of charge</b>.</p>
       <p title="p">All of the fonts are <b>Open Source</b>. This means that you are free to share your favorites with friends and colleagues. You can even customize them for your own use, or collaborate with the original designer to improve them. And you can use them in every way you want, privately or commercially — in print, on your computer, or in your websites.</p>
     </div>
-    <script src="//static.getclicky.com/js" type="text/javascript"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
-    <script type="text/javascript">try{ clicky.init(100917218); }catch(e){}</script>
-    <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100917218ns.gif" /></p></noscript>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
-    <script type="text/javascript" src="js/fonts.js"></script>
-    <script type="text/javascript" src="js/scripts.js"></script>
+     <script src="//static.getclicky.com/js" type="text/javascript"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
+     <script type="text/javascript">try{ clicky.init(100917218); }catch(e){}</script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
+     <script type="text/javascript" src="js/scripts.js"></script>
   </body>
 </html>

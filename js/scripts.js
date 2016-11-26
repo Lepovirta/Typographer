@@ -28,22 +28,23 @@ function Font(name, size) {
 }
 
 function selectOne(fontList) {
-  var randomIndex = Math.floor(Math.random()*fontList.length);
-  return fontList[randomIndex];
+  var randomIndex = Math.floor(Math.random()*fontList.items.length);
+  return fontList.items[randomIndex].family;
 }
 
 function newFont(size, targetElements) {
   if(typeof clicky !== "undefined") { clicky.log('#new-combination','New combination generated'); }
-  var fontName = selectOne(fonts);
-  var fontSize = size;
-  var font = new Font(fontName, fontSize);
-  for(var i = 0; i < targetElements.length; i++) {
-    font.useStyleFor(targetElements[i]);
-  }
-  return font;
-}
 
-var fonts = Fonts.fontList;
+  $.getJSON("https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyCZt1_L89iUTbDM6HROG5ivZ01ngau-86Y", function(data) {
+    var fontName = selectOne(data);
+    var fontSize = size;
+    var font = new Font(fontName, fontSize);
+    for(var i = 0; i < targetElements.length; i++) {
+      font.useStyleFor(targetElements[i]);
+    }
+    return font;
+  });
+}
 
 function booleanToEnglish(boolean) {
   return boolean ? "Yes" : "No";
