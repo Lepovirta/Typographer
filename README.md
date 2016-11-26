@@ -1,17 +1,13 @@
 # The Typographer
-The typographer helps you on font selection.
+Randomize typography combinations from Google Fonts.
 
-Online: [lepovirta.github.io/Typographer/](http://lepovirta.github.io/Typographer/)
+## Features
 
-* Randomized fonts from Google fonts
-* Randomize h1+2 and p fonts
+* All fonts from [Google Fonts](https://fonts.google.com/) API
+* Randomized heading sizes
+* Custom test content
+* Copy @font-face rules directly from the page to your site.
 
-## Usage
-Generate fonts for JS:
-```
-$ sh generate_fonts.sh
-```
-This will generate an JS object containing a list of fonts from `fonts.txt`.
+![Example of typographer](./typographer.gif)
 
-## Todo
-* More actual variations for size, padding, margin, colors, etc.
+## _Try it out! [lepovirta.github.io/Typographer/](http://lepovirta.github.io/Typographer/)_
